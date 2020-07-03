@@ -1,0 +1,37 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>User Application</title>
+    </head>
+    <body>
+        <div id="app"></div>
+
+        <!-- plugin initialization -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function(){
+                // create instance of a plugin
+                var elem = document.getElementById('app');
+                var instance = new UserList(elem, [
+                    {firstname: 'Ross', lastname: 'Geller'},
+                    {firstname: 'Monica', lastname: 'Geller'},
+                    {firstname: 'Chandler', lastname: 'Bing'},
+                    {firstname: 'Joey', lastname: 'Tribbiani'},
+                ]);
+
+                // initialize
+                instance.init();
+
+                // add new users
+                setTimeout(function(){
+                    instance.addUser({firstname: 'Rachel', lastname: 'Green'});
+
+                    setTimeout(function(){
+                        instance.addUser({firstname: 'Phoebe', lastname: 'Buffay'});
+                    }, 2000);
+                }, 2000);
+            });
+        </script>
+    </body>
+</html>
