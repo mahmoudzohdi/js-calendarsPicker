@@ -1,6 +1,7 @@
 # JS-CalendarsPicker
+[Demo Here](https://zohdi.me/js-calendarspicker)
 
-
-## here we search for  good resource for hijri date
-- https://aladhan.com/islamic-calendar-api
-- Intl.DateTimeFormat
+## Instructions
+- Use `npm install` command to install dependencies.
+- Execute command `npm run start` to run webpack development server and top open preview in the browser.
+- Execute command `npm run build` to create plugin distribution files in the `dist` directory.
