@@ -14,7 +14,7 @@ module.exports = {
 
     // output file(s) and chunks
     output: {
-        library: 'UserList',
+        library: 'JSCalrendarsPicker',
         libraryTarget: 'umd',
         globalObject: '(typeof self !== "undefined" ? self : this)',
         libraryExport: 'default',

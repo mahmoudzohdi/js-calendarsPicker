@@ -2,8 +2,8 @@
 import './scss/styles.scss';
 
 // import UserList class
-import { UserList as defaultExport } from './lib/user-list';
+import { JSCalrendarsPicker as defaultExport } from './lib/js-calrendars-picker';
 
-// export default UserList class
+// export default JSCalrendarsPicker class
 // I used `defaultExport` to state that variable name doesn't matter
 export default defaultExport;
