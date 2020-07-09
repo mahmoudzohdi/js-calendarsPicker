@@ -1,11 +1,21 @@
+$calendarWidth: 250px;
 .js-calendars-picker{
+	max-width: $calendarWidth;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	padding: 15px;
+	text-align: center;
 	.days-in-month {
+		display: flex;
 		list-style: none;
 		padding: 0;
 		margin: 0;
+		margin: 15px 0;
+		flex-wrap: wrap;
 		li {
+			width: ($calendarWidth/7);
 			display: inline-block;
-			padding: 3px 5px;
+			padding: 5px 0;
 			line-height: 1;
 			border-radius: 2px;
 			&.jscp-today {
@@ -13,5 +23,14 @@
 				background-color: #9c27b0;
 			}
 		}
+	}
+	.month-navigate-button{
+		background: none;
+		background-color: #eee;
+		border: 1px solid #ccc;
+		padding: 5px 10px;
+		margin: 0 3px;
+		cursor: pointer;
+		border-radius: 3px;
 	}
 }
