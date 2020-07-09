@@ -32,8 +32,8 @@ export class JSCalrendarsPicker {
     this.$monthDaysList = this.$calenderContainer.appendChild(
       getMonthDaysRef()
     );
-    this.$nextMonthButton = this.$calenderContainer.appendChild(getNextMonthButtonRef());
     this.$prevMonthButton = this.$calenderContainer.appendChild(getPrevMonthButtonRef());
+    this.$nextMonthButton = this.$calenderContainer.appendChild(getNextMonthButtonRef());
     this.addEventListeners()
 
     // append days of the month
