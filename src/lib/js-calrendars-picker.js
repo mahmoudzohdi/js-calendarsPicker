@@ -92,6 +92,6 @@ export class JSCalrendarsPicker {
     const day = e.target.innerText;
     const dateObject = new Date(this.year, this.month - 1, day)
     // here we have the date object of the selected day
-    console.log(dateObject);
+    alert(dateObject);
   }
 }
