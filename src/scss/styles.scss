@@ -32,6 +32,9 @@ $calendarWidth: 250px;
 				color: #fff;
 				background-color: #9c27b0;
 			}
+			&:not(.jscp-today):hover {
+				background-color: #eee;
+			}
 		}
 	}
 	.jscp-month-navigate-button{
