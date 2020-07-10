@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "js-plugin-starter",
-  "version": "1.0.1",
+  "version": "0.1.0",
   "description": "VanillaJS plugin starter using Webpack",
   "main": "dist/index.js",
   "scripts": {
