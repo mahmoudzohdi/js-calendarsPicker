@@ -18,14 +18,14 @@ export const getMonthDaysRef = () => {
 export const getNextMonthButtonRef = () => {
   const _$nextMonthButton = createElement("button");
   _$nextMonthButton.classList = "month-navigate-button";
-  _$nextMonthButton.innerText = "next month";
+  _$nextMonthButton.innerText = ">";
 
   return _$nextMonthButton;
 }
 export const getPrevMonthButtonRef = () => {
   const _$prevMonthButton = createElement("button");
   _$prevMonthButton.classList = "month-navigate-button";
-  _$prevMonthButton.innerText = "prev month";
+  _$prevMonthButton.innerText = "<";
   return _$prevMonthButton;
 }
 
