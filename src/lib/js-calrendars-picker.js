@@ -58,17 +58,19 @@ export class JSCalrendarsPicker {
     this.$monthDaysList.append(getDaysInMonth(this.year, this.month));
   }
   addEventListeners(){
-    this.$nextMonthButton.onclick = () => {
-      if(this.month < months.length) {
-        this.month++;
-        this.updateCalendar()
-      }
-    };
-    this.$prevMonthButton.onclick = () => {
-      if(this.month > 1) {
-        this.month--;
-        this.updateCalendar()
-      }
-    };
+    this.$nextMonthButton.onclick = () => this.nextMonthClickCallback();
+    this.$prevMonthButton.onclick = () => this.prevMonthClickCallback();
+  }
+  nextMonthClickCallback(){
+    if(this.month < months.length) {
+      this.month++;
+      this.updateCalendar()
+    }
+  }
+  prevMonthClickCallback(){
+    if(this.month > 1) {
+      this.month--;
+      this.updateCalendar()
+    }
   }
 }
