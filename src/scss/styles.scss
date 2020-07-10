@@ -5,6 +5,15 @@ $calendarWidth: 250px;
 	border-radius: 5px;
 	padding: 15px;
 	text-align: center;
+	.calendar-header{
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		.month-label {
+			margin-right: 5px;
+		}
+	}
 	.days-in-month {
 		display: flex;
 		list-style: none;
@@ -27,10 +36,16 @@ $calendarWidth: 250px;
 	.month-navigate-button{
 		background: none;
 		background-color: #eee;
-		border: 1px solid #ccc;
-		padding: 5px 10px;
+		border: none;
+		padding: 5px 8px;
+		line-height: 1;
 		margin: 0 3px;
 		cursor: pointer;
 		border-radius: 3px;
+		&:hover{
+			background-color: #333;
+			color: #fff;
+
+		}
 	}
 }
