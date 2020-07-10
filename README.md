@@ -9,7 +9,7 @@
 
 const elem = document.getElementById('app');
 
-const instance = new JSCalrendarsPicker(elem);
+const instance = new JSCalendarsPicker(elem);
 
 // initialize
 instance.init();
