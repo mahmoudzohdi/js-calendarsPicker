@@ -12,12 +12,12 @@ npm i js-calendarspicker
 
 ```
 
-import JSCalrendarsPicker from 'js-calendarspicker';
+import JSCalendarsPicker from 'js-calendarspicker';
 
 var elem = document.getElementById('app');
 
 // create instance of a plugin
-var instance = new JSCalrendarsPicker(elem);
+var instance = new JSCalendarsPicker(elem);
 
 // initialize
 instance.init();
