@@ -1,27 +1,27 @@
 $calendarWidth: 250px;
-.js-calendars-picker{
+.jscp-container{
 	max-width: $calendarWidth;
 	border: 1px solid #ccc;
 	border-radius: 5px;
 	padding: 15px;
 	text-align: center;
-	.calendar-header{
+	.jscp-calendar-header{
 		width: 100%;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		.month-label {
+		.jscp-month-label {
 			margin-right: 5px;
 		}
 	}
-	.days-in-month {
+	.jscp-days-in-month {
 		display: flex;
 		list-style: none;
 		padding: 0;
 		margin: 0;
 		margin: 15px 0;
 		flex-wrap: wrap;
-		li {
+		.jscp-day {
 			width: ($calendarWidth/7);
 			display: inline-block;
 			padding: 5px 0;
@@ -33,7 +33,7 @@ $calendarWidth: 250px;
 			}
 		}
 	}
-	.month-navigate-button{
+	.jscp-month-navigate-button{
 		background: none;
 		background-color: #eee;
 		border: none;

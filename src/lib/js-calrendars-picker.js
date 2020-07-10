@@ -28,13 +28,13 @@ export class JSCalrendarsPicker {
     this.$calenderContainer = getCalenderContainerRef();
 
     this.$calendarHeader = this.$calenderContainer.appendChild(getCalendarHeader());
-    this.$monthLabel = this.$calendarHeader.querySelector('.month-label');
-    this.$yearLabel = this.$calendarHeader.querySelector('.year-label');
+    this.$monthLabel = this.$calendarHeader.querySelector('.jscp-month-label');
+    this.$yearLabel = this.$calendarHeader.querySelector('.jscp-year-label');
     this.$monthDaysList = this.$calenderContainer.appendChild(
       getMonthDaysRef()
     );
-    this.$nextMonthButton = this.$calendarHeader.querySelector('.next-button');
-    this.$prevMonthButton = this.$calendarHeader.querySelector('.prev-button');
+    this.$nextMonthButton = this.$calendarHeader.querySelector('.jscp-next-button');
+    this.$prevMonthButton = this.$calendarHeader.querySelector('.jscp-prev-button');
     this.addEventListeners()
 
     // append days of the month
@@ -69,13 +69,19 @@ export class JSCalrendarsPicker {
   nextMonthClickCallback(){
     if(this.month < months.length) {
       this.month++;
-      this.updateCalendar()
+    } else {
+      this.month = 1;
+      this.year++;
     }
+    this.updateCalendar()
   }
   prevMonthClickCallback(){
     if(this.month > 1) {
       this.month--;
-      this.updateCalendar()
+    } else {
+      this.month = months.length;
+      this.year--;
     }
+    this.updateCalendar()
   }
 }
