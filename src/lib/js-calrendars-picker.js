@@ -35,10 +35,11 @@ export class JSCalrendarsPicker {
     );
     this.$nextMonthButton = this.$calendarHeader.querySelector('.jscp-next-button');
     this.$prevMonthButton = this.$calendarHeader.querySelector('.jscp-prev-button');
-    this.addEventListeners()
-
+    
     // append days of the month
     this.updateCalendar();
+    
+    this.addEventListeners();
 
     // append calendar container i the selected element
     this.$elem.appendChild(this.$calenderContainer);
@@ -61,6 +62,9 @@ export class JSCalrendarsPicker {
   updateMonthDaysList() {
     this.$monthDaysList.innerHTML = "";
     this.$monthDaysList.append(getDaysInMonth(this.year, this.month));
+    this.$monthDaysList.querySelectorAll('.jscp-day').forEach( element => {
+      element.onclick = (e) => this.dayClickCallback(e)
+    });
   }
   addEventListeners(){
     this.$nextMonthButton.onclick = () => this.nextMonthClickCallback();
@@ -83,5 +87,11 @@ export class JSCalrendarsPicker {
       this.year--;
     }
     this.updateCalendar()
+  }
+  dayClickCallback(e) {
+    const day = e.target.innerText;
+    const dateObject = new Date(this.year, this.month - 1, day)
+    // here we have the date object of the selected day
+    console.log(dateObject);
   }
 }
