@@ -1,8 +1,9 @@
 {
-  "private": true,
-  "name": "js-plugin-starter",
+  "private": false,
+  "name": "js-calendarspicker",
   "version": "0.1.0",
-  "description": "VanillaJS plugin starter using Webpack",
+  "description": "VanillaJS Calendar Picker",
+  "author": "Mahmoud Zohdi <mahmoud.zohdi@gmail.com>",
   "main": "dist/index.js",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack",
@@ -10,15 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thatisuday/js-plugin-starter.git"
+    "url": "git+https://github.com/mahmoudzohdi/js-calendarsPicker.git"
   },
   "keywords": [],
-  "author": "Uday Hiwarale <thatisuday@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/thatisuday/js-plugin-starter/issues"
+    "url": "https://github.com/mahmoudzohdi/js-calendarsPicker/issues"
   },
-  "homepage": "https://github.com/thatisuday/js-plugin-starter#readme",
+  "homepage": "https://github.com/mahmoudzohdi/js-calendarsPicker",
   "devDependencies": {
     "@babel/core": "^7.10.4",
     "@babel/plugin-proposal-class-properties": "^7.10.4",
