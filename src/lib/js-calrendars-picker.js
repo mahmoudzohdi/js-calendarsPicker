@@ -3,9 +3,7 @@ import { months } from "../helpers/const-data";
 import {
   getCalenderContainerRef,
   getMonthDaysRef,
-  getNextMonthButtonRef,
-  getPrevMonthButtonRef,
-  getMonthLabelRef,
+  getCalendarHeader,
   getDaysInMonth
 } from "../helpers/prepare-nodes";
 
@@ -28,12 +26,15 @@ export class JSCalrendarsPicker {
 
     // store elements references
     this.$calenderContainer = getCalenderContainerRef();
-    this.$monthLabel = this.$calenderContainer.appendChild(getMonthLabelRef());
+
+    this.$calendarHeader = this.$calenderContainer.appendChild(getCalendarHeader());
+    this.$monthLabel = this.$calendarHeader.querySelector('.month-label');
+    this.$yearLabel = this.$calendarHeader.querySelector('.year-label');
     this.$monthDaysList = this.$calenderContainer.appendChild(
       getMonthDaysRef()
     );
-    this.$prevMonthButton = this.$calenderContainer.appendChild(getPrevMonthButtonRef());
-    this.$nextMonthButton = this.$calenderContainer.appendChild(getNextMonthButtonRef());
+    this.$nextMonthButton = this.$calendarHeader.querySelector('.next-button');
+    this.$prevMonthButton = this.$calendarHeader.querySelector('.prev-button');
     this.addEventListeners()
 
     // append days of the month
@@ -48,10 +49,14 @@ export class JSCalrendarsPicker {
 
   updateCalendar() {
     this.updateMonthDaysList();
-    this.updateMonthName();
+    this.updateMonthNameLabel();
+    this.updateYearLabel();
   }
-  updateMonthName() {
+  updateMonthNameLabel() {
     this.$monthLabel.innerText = months[this.month - 1];
+  }
+  updateYearLabel() {
+    this.$yearLabel.innerText = this.year;
   }
   updateMonthDaysList() {
     this.$monthDaysList.innerHTML = "";
