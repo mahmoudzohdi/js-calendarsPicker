@@ -12,7 +12,7 @@ import {
 export class JSCalendarsPicker {
   constructor(elem, options) {
     this.options = {
-      selected: () => {},
+      onSelect: (e) => e,
       ...options
     }
     this.$elem = elem;
@@ -105,7 +105,7 @@ export class JSCalendarsPicker {
     // here we have the date object of the selected day
     this.updateInputValue(formatDate(dateObject));
     this.updateSelectedDay(e.target);
-    this.options.selected(dateObject);
+    this.options.onSelect(dateObject);
 
   }
   updateInputValue(value){
