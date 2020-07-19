@@ -1,24 +1,27 @@
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>JS Calendars Picker</title>
-    </head>
-    <body>
-        <div id="app"></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>JS Calendars Picker</title>
+  </head>
+  <body>
+    <input id="app" type="text" />
+    <!-- plugin initialization -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // create instance of a plugin
+        var elem = document.getElementById("app");
+        var instance = new JSCalendarsPicker(elem, {
+          onSelect: function (selectedDate) {
+            // the selected date is here
+            alert(selectedDate);
+          },
+        });
 
-        <!-- plugin initialization -->
-        <script>
-            document.addEventListener('DOMContentLoaded', function(){
-                // create instance of a plugin
-                var elem = document.getElementById('app');
-                var instance = new JSCalendarsPicker(elem);
-
-                // initialize
-                instance.init();
-
-            });
-        </script>
-    <script type="text/javascript" src="./index.js"></script></body>
+        // initialize
+        instance.init();
+      });
+    </script>
+  <script type="text/javascript" src="./index.js"></script></body>
 </html>
