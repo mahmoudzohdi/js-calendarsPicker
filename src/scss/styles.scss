@@ -29,10 +29,14 @@ $calendarWidth: 250px;
 			border-radius: 2px;
 			cursor: pointer;
 			&.jscp-today {
+				color: #9c27b0;
+				border: 1px solid #9c27b0;
+			}
+			&.jscp-selected {
 				color: #fff;
 				background-color: #9c27b0;
 			}
-			&:not(.jscp-today):hover {
+			&:not(.jscp-today):not(.jscp-selected):hover {
 				background-color: #eee;
 			}
 		}

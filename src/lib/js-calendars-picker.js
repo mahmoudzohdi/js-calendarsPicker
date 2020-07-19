@@ -1,5 +1,6 @@
 // import dependencies
 import { months } from "../helpers/const-data";
+import { $, formatDate } from "../helpers/utils";
 import {
   getCalenderContainerRef,
   getMonthDaysRef,
@@ -9,7 +10,11 @@ import {
 
 // return UserList class
 export class JSCalendarsPicker {
-  constructor(elem) {
+  constructor(elem, options) {
+    this.options = {
+      selected: () => {},
+      ...options
+    }
     this.$elem = elem;
 
     this.initialized = false;
@@ -23,6 +28,12 @@ export class JSCalendarsPicker {
     this.year = this.today.getFullYear();
     // store today's month date
     this.month = this.today.getMonth() + 1;
+    
+    this.selectedDate = {
+      year: null,
+      month: null,
+      day: null,
+    };
 
     // store elements references
     this.$calenderContainer = getCalenderContainerRef();
@@ -42,7 +53,7 @@ export class JSCalendarsPicker {
     this.addEventListeners();
 
     // append calendar container i the selected element
-    this.$elem.appendChild(this.$calenderContainer);
+    this.$elem.parentNode.insertBefore(this.$calenderContainer, this.$elem.nextSibling);
 
     // set initialized to `true`
     this.initialized = true;
@@ -92,6 +103,16 @@ export class JSCalendarsPicker {
     const day = e.target.innerText;
     const dateObject = new Date(this.year, this.month - 1, day)
     // here we have the date object of the selected day
-    alert(dateObject);
+    this.updateInputValue(formatDate(dateObject));
+    this.updateSelectedDay(e.target);
+    this.options.selected(dateObject);
+
+  }
+  updateInputValue(value){
+    this.$elem.value = value;
+  }
+  updateSelectedDay(target){
+    $('.jscp-selected') && $('.jscp-selected').classList.remove('jscp-selected'); 
+    target.classList.add("jscp-selected");
   }
 }
