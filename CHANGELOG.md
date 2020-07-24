@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.2.1] - 2020-07-24
+
+### Changed
+  
+  - make the calendar popup hidden by default, and appear on input focus & hide on click outside the plugin wrapper
+  - make the selected input `readonly` by default 
+
 ## [0.2.0] - 2020-07-19
 
 ### Changed
