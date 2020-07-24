@@ -1,6 +1,6 @@
 // import dependencies
 import { months } from "../helpers/const-data";
-import { $, formatDate } from "../helpers/utils";
+import { $, formatDate, focusClass } from "../helpers/utils";
 import {
   getCalenderContainerRef,
   getMonthDaysRef,
@@ -81,6 +81,8 @@ export class JSCalendarsPicker {
   addEventListeners(){
     this.$nextMonthButton.onclick = () => this.nextMonthClickCallback();
     this.$prevMonthButton.onclick = () => this.prevMonthClickCallback();
+    this.$elem.onfocus = () => focusClass(this.$elem, true);
+    this.$elem.onblur = () => focusClass(this.$elem, false);
   }
   nextMonthClickCallback(){
     if(this.month < months.length) {

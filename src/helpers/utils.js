@@ -12,3 +12,8 @@ export const isToday = (year, month, day) => {
 export const formatDate = (date) => {
   return new Intl.DateTimeFormat('en-US').format(date)
 }
+
+export const focusClass = (element, add) => {
+  const method = add ? 'add' : 'remove';
+  element.classList[method]('focused');
+}
