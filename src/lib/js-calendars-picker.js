@@ -1,6 +1,6 @@
 // import dependencies
 import { months } from "../helpers/const-data";
-import { $, formatDate, focusClass } from "../helpers/utils";
+import { $, formatDate, focusClass, isElementOutsidePlugin } from "../helpers/utils";
 import {
   getCalenderWrapperRef,
   getCalenderContainerRef,
@@ -97,7 +97,7 @@ export class JSCalendarsPicker {
     this.$nextMonthButton.onclick = () => this.nextMonthClickCallback();
     this.$prevMonthButton.onclick = () => this.prevMonthClickCallback();
     this.$elem.onfocus = () => focusClass(this.$calenderWrapper, true);
-    this.$elem.onblur = () => focusClass(this.$calenderWrapper, false);
+    document.body.onclick = (e) => (isElementOutsidePlugin(this.$calenderWrapper, e.target) && focusClass(this.$calenderWrapper, false));
   }
   nextMonthClickCallback(){
     if(this.month < months.length) {

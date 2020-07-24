@@ -17,3 +17,18 @@ export const focusClass = (element, add) => {
   const method = add ? 'add' : 'remove';
   element.classList[method]('focused');
 }
+
+export const isElementOutsidePlugin = (parent, element) => {
+
+  return parent != element && !isDescendant(parent, element);
+}
+const isDescendant = (parent, child) => {
+  var node = child.parentNode;
+  while (node != null) {
+      if (node == parent) {
+          return true;
+      }
+      node = node.parentNode;
+  }
+  return false;
+}

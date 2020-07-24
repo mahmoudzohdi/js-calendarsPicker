@@ -1,59 +1,76 @@
 $calendarWidth: 250px;
-.jscp-container{
-	max-width: $calendarWidth;
-	border: 1px solid #ccc;
-	border-radius: 5px;
-	padding: 15px;
-	text-align: center;
-	.jscp-calendar-header{
-		width: 100%;
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		.jscp-month-label {
-			margin-right: 5px;
-		}
-	}
-	.jscp-days-in-month {
-		display: flex;
-		list-style: none;
-		padding: 0;
-		margin: 0;
-		margin: 15px 0;
-		flex-wrap: wrap;
-		.jscp-day {
-			width: ($calendarWidth/7);
-			display: inline-block;
-			padding: 5px 0;
-			line-height: 1;
-			border-radius: 2px;
-			cursor: pointer;
-			&.jscp-today {
-				color: #9c27b0;
-				border: 1px solid #9c27b0;
-			}
-			&.jscp-selected {
-				color: #fff;
-				background-color: #9c27b0;
-			}
-			&:not(.jscp-today):not(.jscp-selected):hover {
-				background-color: #eee;
-			}
-		}
-	}
-	.jscp-month-navigate-button{
-		background: none;
-		background-color: #eee;
-		border: none;
-		padding: 5px 8px;
-		line-height: 1;
-		margin: 0 3px;
-		cursor: pointer;
-		border-radius: 3px;
-		&:hover{
-			background-color: #333;
-			color: #fff;
+.jscp-wrapper {
+	position: relative;
+	z-index: 1;
+	.jscp-container{
+		position: absolute;
+		top: 100%;
+		left: 0;
+		z-index: 2;
+		// hide untile input get focused
+		display: none;
 
+		width: 100%;
+		max-width: $calendarWidth;
+		border: 1px solid #ccc;
+		border-radius: 5px;
+		padding: 15px;
+		text-align: center;
+		.jscp-calendar-header{
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			.jscp-month-label {
+				margin-right: 5px;
+			}
+		}
+		.jscp-days-in-month {
+			display: flex;
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			margin: 15px 0;
+			flex-wrap: wrap;
+			.jscp-day {
+				width: ($calendarWidth/7);
+				display: inline-block;
+				padding: 5px 0;
+				line-height: 1;
+				border-radius: 2px;
+				cursor: pointer;
+				&.jscp-today {
+					color: #9c27b0;
+					border: 1px solid #9c27b0;
+				}
+				&.jscp-selected {
+					color: #fff;
+					background-color: #9c27b0;
+				}
+				&:not(.jscp-today):not(.jscp-selected):hover {
+					background-color: #eee;
+				}
+			}
+		}
+		.jscp-month-navigate-button{
+			background: none;
+			background-color: #eee;
+			border: none;
+			padding: 5px 8px;
+			line-height: 1;
+			margin: 0 3px;
+			cursor: pointer;
+			border-radius: 3px;
+			&:hover{
+				background-color: #333;
+				color: #fff;
+	
+			}
+		}
+	}
+	&.focused{
+		.jscp-container{
+			display: block;
 		}
 	}
 }
