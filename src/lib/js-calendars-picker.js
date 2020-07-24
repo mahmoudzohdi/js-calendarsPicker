@@ -54,7 +54,8 @@ export class JSCalendarsPicker {
 
     // append calendar container i the selected element
     this.$elem.parentNode.insertBefore(this.$calenderContainer, this.$elem.nextSibling);
-
+    
+    this.$elem.setAttribute('readonly', true)
     // set initialized to `true`
     this.initialized = true;
   }
