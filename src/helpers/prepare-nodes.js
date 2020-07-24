@@ -1,5 +1,10 @@
 import { createElement, isToday } from './utils';
 
+export const getCalenderWrapperRef = () => {
+  const $calenderWrapper = createElement("div");
+  $calenderWrapper.classList = "jscp-wrapper";
+  return $calenderWrapper;
+}
 export const getCalenderContainerRef = () => {
   const $calenderContainer = createElement("div");
   $calenderContainer.classList = "jscp-container";

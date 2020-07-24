@@ -2,6 +2,7 @@
 import { months } from "../helpers/const-data";
 import { $, formatDate, focusClass } from "../helpers/utils";
 import {
+  getCalenderWrapperRef,
   getCalenderContainerRef,
   getMonthDaysRef,
   getCalendarHeader,
@@ -36,6 +37,7 @@ export class JSCalendarsPicker {
     };
 
     // store elements references
+    this.$calenderWrapper = getCalenderWrapperRef();
     this.$calenderContainer = getCalenderContainerRef();
 
     this.$calendarHeader = this.$calenderContainer.appendChild(getCalendarHeader());
@@ -51,13 +53,26 @@ export class JSCalendarsPicker {
     this.updateCalendar();
     
     this.addEventListeners();
-
-    // append calendar container i the selected element
-    this.$elem.parentNode.insertBefore(this.$calenderContainer, this.$elem.nextSibling);
     
-    this.$elem.setAttribute('readonly', true)
+    // append plugin DOM
+    this.appendPluginDOM();
+    
     // set initialized to `true`
     this.initialized = true;
+  }
+
+  appendPluginDOM(){
+    // make the selected input readonly
+    this.$elem.setAttribute('readonly', true)
+    // add plugin class to the selected input
+    this.$elem.classList.add('jscp-input')
+
+    // append plugin wrapper after the selected input
+    this.$elem.parentNode.insertBefore(this.$calenderWrapper, this.$elem.nextSibling);
+    // move selected input into the plugin wrapper
+    this.$calenderWrapper.append(this.$elem);
+    // appent plguin container into wrapper
+    this.$calenderWrapper.append(this.$calenderContainer);
   }
 
   updateCalendar() {
