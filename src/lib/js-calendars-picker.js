@@ -96,8 +96,8 @@ export class JSCalendarsPicker {
   addEventListeners(){
     this.$nextMonthButton.onclick = () => this.nextMonthClickCallback();
     this.$prevMonthButton.onclick = () => this.prevMonthClickCallback();
-    this.$elem.onfocus = () => focusClass(this.$elem, true);
-    this.$elem.onblur = () => focusClass(this.$elem, false);
+    this.$elem.onfocus = () => focusClass(this.$calenderWrapper, true);
+    this.$elem.onblur = () => focusClass(this.$calenderWrapper, false);
   }
   nextMonthClickCallback(){
     if(this.month < months.length) {
