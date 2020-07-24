@@ -1,4 +1,4 @@
-$calendarWidth: 250px;
+$calendarWidth: 230px;
 .jscp-wrapper {
 	position: relative;
 	z-index: 1;
@@ -9,12 +9,12 @@ $calendarWidth: 250px;
 		z-index: 2;
 		// hide untile input get focused
 		display: none;
-
-		width: 100%;
-		max-width: $calendarWidth;
+		box-sizing: border-box;
+		width: $calendarWidth;
+		max-width: 100%;
 		border: 1px solid #ccc;
 		border-radius: 5px;
-		padding: 15px;
+		padding: 15px 10px;
 		text-align: center;
 		.jscp-calendar-header{
 			width: 100%;
@@ -33,7 +33,7 @@ $calendarWidth: 250px;
 			margin: 15px 0;
 			flex-wrap: wrap;
 			.jscp-day {
-				width: ($calendarWidth/7);
+				width: (100%/7);
 				display: inline-block;
 				padding: 5px 0;
 				line-height: 1;
