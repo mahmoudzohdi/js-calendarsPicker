@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.3.0] - 2020-07-26
+
+  ### Added
+    - add `format` option, now you can write your favorite format from the supported formats
+
 ## [0.2.3] - 2020-07-26
 
   ### Fixed
