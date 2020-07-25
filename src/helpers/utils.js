@@ -43,8 +43,8 @@ const getFormatSplitter = (format) => {
 const preparDayValue = (dateObj, dayFormat) => {
   /**
   suported day formats:
-    D: 1..31
-    DD: 01..31
+    d: 1..31
+    dd: 01..31
 	*/
   const day = dateObj.getDate(); // get date day, for example: 1, 12
   switch (dayFormat.length) {
@@ -57,10 +57,10 @@ const preparDayValue = (dateObj, dayFormat) => {
 const preparMonthValue = (dateObj, monthFormat) => {
   /**
   suported month formats:
-    M: 1..12
-    MM: 01..12
-    MMM: Jan
-    MMMM: January
+    m: 1..12
+    mm: 01..12
+    mmm: Jan
+    mmmm: January
 	*/
   const month = dateObj.getMonth() + 1; // get date month
   switch (monthFormat.length) {
@@ -77,8 +77,8 @@ const preparMonthValue = (dateObj, monthFormat) => {
 const preparYearValue = (dateObj, yearFormat) => {
   /**
   suported year formats:
-    YYYY: 2020
-    YY: 20
+    yyyy: 2020
+    yy: 20
 	*/
   const year = dateObj.getFullYear(); // get date year
   switch (yearFormat.length) {
@@ -104,5 +104,3 @@ export const dateFormatter = (dateObj, format) => {
     })
     .join(splitter);
 };
-
-// referance: https://momentjs.com/docs/#/parsing/string-format/
