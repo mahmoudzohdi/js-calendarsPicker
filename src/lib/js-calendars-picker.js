@@ -1,6 +1,6 @@
 // import dependencies
 import { months } from "../helpers/const-data";
-import { $, focusClass, isElementOutsidePlugin } from "../helpers/utils";
+import { $, focusClass, isElementOutsidePlugin, dateFormatter } from "../helpers/utils";
 import {
   getCalenderWrapperRef,
   getCalenderContainerRef,
@@ -123,7 +123,7 @@ export class JSCalendarsPicker {
     const day = e.target.innerText;
     const dateObject = new Date(this.year, this.month - 1, day)
     // here we have the date object of the selected day
-    // this.updateInputValue((dateObject));
+    this.updateInputValue(dateFormatter(dateObject, this.options.format));
     this.updateSelectedDay(e.target);
     this.options.onSelect(dateObject);
 
