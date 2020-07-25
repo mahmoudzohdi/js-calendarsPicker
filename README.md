@@ -1,12 +1,12 @@
 # JS-CalendarsPicker
+
 [Demo Here](https://zohdi.me/js-calendarspicker)
 
-
 ## Installation
+
 ```
 npm i js-calendarspicker
 ```
-
 
 ## Usage
 
@@ -24,13 +24,43 @@ instance.init();
 
 ```
 
+## Options
+
+### format
+
+default: `'dd/mm/yyyy'`
+
+#### supported formats:
+
+| Input  | Example  | Description          |
+| ------ | -------- | -------------------- |
+| `YYYY` | `2019`   | 4 digit year         |
+| `YY`   | `19`     | 2 digit year         |
+| `M`    | `1..12`  | month number         |
+| `MM`   | `01..12` | 2 digit month number |
+| `MMM`  | `Jan`    | short month name     |
+| `MMMM` | `1..12`  | full month name      |
+| `D`    | `1..31`  | day number           |
+| `DD`   | `01..31` | 2 digit day number   |
+
+> inspired from [moment](https://momentjs.com/docs/#/parsing/string-format/)
+
+example:
+
+```
+new JSCalendarsPicker(elem, {
+  format: 'dd-mm-yyyy'
+});
+```
+
+
 ## Callback Events
 
 ### onSelect
 
 this event fired on day selection.
 
-Usage:
+#### Usage:
 
 ```
 new JSCalendarsPicker(elem, {
