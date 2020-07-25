@@ -13,7 +13,9 @@ import {
 export class JSCalendarsPicker {
   constructor(elem, options) {
     this.options = {
+      format: 'dd/mm/yyyy',
       onSelect: (e) => e,
+      // here overwrite defaults with user's options
       ...options
     }
     this.$elem = elem;
