@@ -30,7 +30,7 @@ instance.init();
 
 default: `'dd/mm/yyyy'`
 
-#### supported formats:
+#### supported tokens (not case-sensitive):
 
 | Input  | Example  | Description          |
 | ------ | -------- | -------------------- |
@@ -39,7 +39,7 @@ default: `'dd/mm/yyyy'`
 | `M`    | `1..12`  | month number         |
 | `MM`   | `01..12` | 2 digit month number |
 | `MMM`  | `Jan`    | short month name     |
-| `MMMM` | `1..12`  | full month name      |
+| `MMMM` | `January`  | full month name      |
 | `D`    | `1..31`  | day number           |
 | `DD`   | `01..31` | 2 digit day number   |
 
