@@ -32,16 +32,16 @@ default: `'dd/mm/yyyy'`
 
 #### supported tokens (not case-sensitive):
 
-| Input  | Example  | Description          |
-| ------ | -------- | -------------------- |
-| `YYYY` | `2019`   | 4 digit year         |
-| `YY`   | `19`     | 2 digit year         |
-| `M`    | `1..12`  | month number         |
-| `MM`   | `01..12` | 2 digit month number |
-| `MMM`  | `Jan`    | short month name     |
-| `MMMM` | `January`  | full month name      |
-| `D`    | `1..31`  | day number           |
-| `DD`   | `01..31` | 2 digit day number   |
+| Input  | Example   | Description          |
+| ------ | --------- | -------------------- |
+| `YYYY` | `2019`    | 4 digit year         |
+| `YY`   | `19`      | 2 digit year         |
+| `M`    | `1..12`   | month number         |
+| `MM`   | `01..12`  | 2 digit month number |
+| `MMM`  | `Jan`     | short month name     |
+| `MMMM` | `January` | full month name      |
+| `D`    | `1..31`   | day number           |
+| `DD`   | `01..31`  | 2 digit day number   |
 
 > inspired from [moment](https://momentjs.com/docs/#/parsing/string-format/)
 
