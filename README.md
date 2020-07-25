@@ -45,6 +45,15 @@ default: `'dd/mm/yyyy'`
 
 > inspired from [moment](https://momentjs.com/docs/#/parsing/string-format/)
 
+#### supported splitters:
+
+| Input | Example      |
+| ----- | ------------ |
+| `/`   | `dd/mm/yyyy` |
+| `.`   | `dd.mm.yyyy` |
+| `-`   | `dd-mm-yyyy` |
+| space | `dd mm yyyy` |
+
 example:
 
 ```
@@ -52,7 +61,6 @@ new JSCalendarsPicker(elem, {
   format: 'dd-mm-yyyy'
 });
 ```
-
 
 ## Callback Events
 
