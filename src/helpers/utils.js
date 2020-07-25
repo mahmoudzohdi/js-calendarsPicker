@@ -1,4 +1,4 @@
-import {months, shortMonths} from './utils';
+import {months, shortMonths} from './const-data';
 export const createElement = (elementName) =>
   document.createElement(elementName);
 export const $ = (selector) => document.querySelector(selector);
