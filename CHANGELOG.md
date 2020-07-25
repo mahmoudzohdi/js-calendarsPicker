@@ -7,7 +7,7 @@ All notable changes to this project will be documented in this file.
   ### Added
   - add `format` option, now you can write your favorite format from the supported formats
 
-## [0.2.3] - 2020-07-26
+## [0.2.3] - 2020-07-25
 
   ### Fixed
   - fix issue in hide calendar popup when click outside in Firefox
