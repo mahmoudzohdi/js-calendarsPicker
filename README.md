@@ -28,9 +28,9 @@ instance.init();
 
 ### format
 
-default: `'dd/mm/yyyy'`
+default: `'DD/MM/YYYY'`
 
-#### supported tokens (not case-sensitive):
+#### supported tokens (case-sensitive):
 
 | Input  | Example   | Description          |
 | ------ | --------- | -------------------- |
@@ -43,22 +43,21 @@ default: `'dd/mm/yyyy'`
 | `D`    | `1..31`   | day number           |
 | `DD`   | `01..31`  | 2 digit day number   |
 
-> inspired from [moment](https://momentjs.com/docs/#/parsing/string-format/)
 
 #### supported splitters:
 
 | Input | Example      |
 | ----- | ------------ |
-| `/`   | `dd/mm/yyyy` |
-| `.`   | `dd.mm.yyyy` |
-| `-`   | `dd-mm-yyyy` |
-| space | `dd mm yyyy` |
+| `/`   | `DD/MM/YYYY` |
+| `.`   | `DD.MM.YYYY` |
+| `-`   | `DD-MM-YYYY` |
+| space | `DD MM YYYY` |
 
 example:
 
 ```
 new JSCalendarsPicker(elem, {
-  format: 'dd-mm-yyyy'
+  format: 'DD-MM-YYYY'
 });
 ```
 
