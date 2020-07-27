@@ -27,11 +27,11 @@ export class JSCalendarsPicker {
   // initialize plugin
   init() {
     // store today date
-    this.today = new Date();
+    const initDate = this.options.initDate || new Date();
     // store today's year date
-    this.year = (this.options.initDate || this.today).getFullYear();
+    this.year = initDate.getFullYear();
     // store today's month date
-    this.month = (this.options.initDate || this.today).getMonth() + 1;
+    this.month = initDate.getMonth() + 1;
     
     this.selectedDate = {
       year: null,
@@ -68,11 +68,7 @@ export class JSCalendarsPicker {
   initPluginWithDate(){
     const { initDate } = this.options;
     if(!initDate) return;
-    this.selectedDate = {
-      year: initDate.getFullYear(),
-      month: initDate.getMonth() +1,
-      day: initDate.getDate(),
-    };
+    this.updateSelectedDate(initDate);
     this.updateInputValue(initDate);
 
     this.$monthDaysList.childNodes[this.selectedDate.day -1].classList.add('jscp-selected');
@@ -90,7 +86,13 @@ export class JSCalendarsPicker {
     // appent plguin container into wrapper
     this.$calenderWrapper.append(this.$calenderContainer);
   }
-
+  updateSelectedDate(dateObject) {
+    this.selectedDate = {
+      year: dateObject.getFullYear(),
+      month: dateObject.getMonth() +1,
+      day: dateObject.getDate(),
+    };
+  }
   updateCalendar() {
     this.updateMonthDaysList();
     this.updateMonthNameLabel();
@@ -139,11 +141,7 @@ export class JSCalendarsPicker {
     // here we have the date object of the selected day
     this.updateInputValue(dateObject);
     this.updateSelectedDay(e.target);
-    this.selectedDate = {
-      year: dateObject.getFullYear(),
-      month: dateObject.getMonth() +1,
-      day: dateObject.getDate(),
-    };
+    this.updateSelectedDate(dateObject);
     this.options.onSelect(dateObject);
 
   }
