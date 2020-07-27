@@ -11,8 +11,8 @@ export const isToday = (year, month, day) => {
   );
 };
 
-export const focusClass = (element, add) => {
-  const method = add ? "add" : "remove";
+export const focusClass = (element, isAdd) => {
+  const method = isAdd ? "add" : "remove";
   element.classList[method]("focused");
 };
 
