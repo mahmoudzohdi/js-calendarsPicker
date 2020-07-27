@@ -13,7 +13,7 @@ import {
 export class JSCalendarsPicker {
   constructor(elem, options) {
     this.options = {
-      format: 'dd/mm/yyyy',
+      format: 'DD/MM/YYYY',
       onSelect: (e) => e,
       // here overwrite defaults with user's options
       ...options

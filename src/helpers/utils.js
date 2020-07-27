@@ -30,60 +30,73 @@ const isDescendant = (parent, child) => {
   return false;
 };
 
+const twoDigitsNumber = (num) => (num < 10 ? `0${num}` : num);
 const getFormatSplitter = (format) => {
-  if (format.indexOf("/") != -1) return "/";
   if (format.indexOf(".") != -1) return ".";
   if (format.indexOf(" ") != -1) return " ";
   if (format.indexOf("-") != -1) return "-";
+  return "/";
 };
 const preparDayValue = (dateObj, dayFormat) => {
   /**
   suported day formats:
     d: 1..31
     dd: 01..31
-	*/
+  */
+  const isUpperCase = dayFormat[0] == 'D';
   const day = dateObj.getDate(); // get date day, for example: 1, 12
-  switch (dayFormat.length) {
-    case 2:
-      return day < 10 ? `0${day}` : day;
-    default:
-      return day;
+  if(isUpperCase){
+    switch (dayFormat.length) {
+      case 2:
+        return twoDigitsNumber(day);
+      default:
+        return day;
+    }
   }
+  return twoDigitsNumber(day);
 };
 const preparMonthValue = (dateObj, monthFormat) => {
   /**
   suported month formats:
-    m: 1..12
-    mm: 01..12
-    mmm: Jan
-    mmmm: January
-	*/
+    M: 1..12
+    MM: 01..12
+    MMM: Jan
+    MMMM: January
+  */
+  const isUpperCase = monthFormat[0] == 'M';
   const month = dateObj.getMonth() + 1; // get date month
-  switch (monthFormat.length) {
-    case 4:
-      return months[month - 1]
-    case 3:
-      return shortMonths[month - 1]
-    case 2:
-      return month < 10 ? `0${month}` : month;
-    default:
-      return month;
+  if(isUpperCase) {
+    switch (monthFormat.length) {
+      case 4:
+        return months[month - 1]
+      case 3:
+        return shortMonths[month - 1]
+      case 2:
+        return twoDigitsNumber(month);
+      default:
+        return month;
+    }
   }
+  return twoDigitsNumber(month);
 };
 const preparYearValue = (dateObj, yearFormat) => {
   /**
   suported year formats:
-    yyyy: 2020
-    yy: 20
-	*/
+    YYYY: 2020
+    YY: 20
+  */
+  const isUpperCase = yearFormat[0] == "Y";
   const year = dateObj.getFullYear(); // get date year
-  switch (yearFormat.length) {
-    case 2:
-      let stringYear = String(x);
-      return stringYear.slice((stringYear.length - 2), stringYear.length);
-    default:
-      return year;
+  if(isUpperCase) {
+    switch (yearFormat.length) {
+      case 2:
+        let stringYear = String(x);
+        return stringYear.slice((stringYear.length - 2), stringYear.length);
+      default:
+        return year;
+    }
   }
+  return year; // YYYY
 };
 
 export const dateFormatter = (dateObj, format) => {
