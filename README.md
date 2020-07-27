@@ -28,6 +28,9 @@ instance.init();
 
 ### format
 
+You can use this option to customize the date format.
+
+type: `string`
 default: `'DD/MM/YYYY'`
 
 #### supported tokens (case-sensitive):
@@ -61,11 +64,26 @@ new JSCalendarsPicker(elem, {
 });
 ```
 
+### initDate
+
+You can use this option to init your calendar with pre-defined date
+
+type: `Date Object`
+default: `null`
+
+example:
+
+```
+new JSCalendarsPicker(elem, {
+  initDate: new Date(2020, 8, 20)
+});
+```
+
 ## Callback Events
 
 ### onSelect
 
-this event fired on day selection.
+this event fired on day selection, returns the `Date Object` of the selected day 
 
 #### Usage:
 
