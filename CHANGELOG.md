@@ -2,10 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
-## [0.3.0] - 2020-07-26
+## [0.3.0] - 2020-07-28
 
   ### Added
   - add `format` option, now you can write your favorite format from the supported formats
+  - add `initDate` option, now you can init your calendarPicker with pre-defined date
 
 ## [0.2.3] - 2020-07-25
 
