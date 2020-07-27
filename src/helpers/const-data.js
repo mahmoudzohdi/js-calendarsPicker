@@ -1,4 +1,4 @@
-export const months = [
+export const MONTHS = [
   "January",
   "February",
   "March",
@@ -12,7 +12,7 @@ export const months = [
   "November",
   "December",
 ];
-export const shortMonths = [
+export const SHORT_MONTHS = [
   "Jan",
   "Feb",
   "Mar",

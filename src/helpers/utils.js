@@ -1,4 +1,4 @@
-import {months, shortMonths} from './const-data';
+import {MONTHS, SHORT_MONTHS} from './const-data';
 export const createElement = (elementName) =>
   document.createElement(elementName);
 export const $ = (selector) => document.querySelector(selector);
@@ -68,9 +68,9 @@ const preparMonthValue = (dateObj, monthFormat) => {
   if(isUpperCase) {
     switch (monthFormat.length) {
       case 4:
-        return months[month - 1]
+        return MONTHS[month - 1]
       case 3:
-        return shortMonths[month - 1]
+        return SHORT_MONTHS[month - 1]
       case 2:
         return twoDigitsNumber(month);
       default:

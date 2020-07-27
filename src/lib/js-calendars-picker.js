@@ -1,5 +1,5 @@
 // import dependencies
-import { months, SELECTED_DAY_CLASS } from "../helpers/const-data";
+import { MONTHS, SELECTED_DAY_CLASS } from "../helpers/const-data";
 import { $, focusClass, isElementOutsidePlugin, dateFormatter } from "../helpers/utils";
 import {
   getCalenderWrapperRef,
@@ -99,7 +99,7 @@ export class JSCalendarsPicker {
     this.updateYearLabel();
   }
   updateMonthNameLabel() {
-    this.$monthLabel.innerText = months[this.month - 1];
+    this.$monthLabel.innerText = MONTHS[this.month - 1];
   }
   updateYearLabel() {
     this.$yearLabel.innerText = this.year;
@@ -118,7 +118,7 @@ export class JSCalendarsPicker {
     document.onclick = (e) => (isElementOutsidePlugin(this.$calenderWrapper, e.target) && focusClass(this.$calenderWrapper, false));
   }
   nextMonthClickCallback(){
-    if(this.month < months.length) {
+    if(this.month < MONTHS.length) {
       this.month++;
     } else {
       this.month = 1;
@@ -130,7 +130,7 @@ export class JSCalendarsPicker {
     if(this.month > 1) {
       this.month--;
     } else {
-      this.month = months.length;
+      this.month = MONTHS.length;
       this.year--;
     }
     this.updateCalendar()
