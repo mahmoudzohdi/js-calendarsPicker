@@ -26,3 +26,4 @@ export const shortMonths = [
   "Nov",
   "Dec",
 ];
+export const SELECTED_DAY_CLASS = 'jscp-selected'; 

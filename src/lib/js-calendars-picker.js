@@ -1,5 +1,5 @@
 // import dependencies
-import { months } from "../helpers/const-data";
+import { months, SELECTED_DAY_CLASS } from "../helpers/const-data";
 import { $, focusClass, isElementOutsidePlugin, dateFormatter } from "../helpers/utils";
 import {
   getCalenderWrapperRef,
@@ -71,7 +71,7 @@ export class JSCalendarsPicker {
     this.updateSelectedDate(initDate);
     this.updateInputValue(initDate);
 
-    this.$monthDaysList.childNodes[this.selectedDate.day -1].classList.add('jscp-selected');
+    this.$monthDaysList.childNodes[this.selectedDate.day -1].classList.add(SELECTED_DAY_CLASS);
   }
   appendPluginDOM(){
     // make the selected input readonly
@@ -149,7 +149,8 @@ export class JSCalendarsPicker {
     this.$elem.value = dateFormatter(dateObject, this.options.format);
   }
   updateSelectedDay(target){
-    $('.jscp-selected') && $('.jscp-selected').classList.remove('jscp-selected'); 
-    target.classList.add("jscp-selected");
+    const $selectedDay =  $(`.${SELECTED_DAY_CLASS}`)
+    $selectedDay&& $selectedDay.classList.remove(SELECTED_DAY_CLASS); 
+    target.classList.add(SELECTED_DAY_CLASS);
   }
 }
