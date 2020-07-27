@@ -39,13 +39,18 @@ const getPrevMonthButtonRef = () => {
   return _$prevMonthButton;
 }
 
-export const getDaysInMonth = (year, month) => {
+const isSelectedDate = (selectedDate, {year, month, day} ) => {
+  return selectedDate.year == year && selectedDate.month == month && selectedDate.day == day
+} 
+
+export const getDaysInMonth = (year, month, selectedDate) => {
   const _updatedDaysInMonth = new Date(year, month, 0).getDate();
   const daysFragment = document.createDocumentFragment();
   for (let i = 1; i <= _updatedDaysInMonth; i++) {
     const todayClass = isToday(year, month, i) ? "jscp-today" : "";
+    const selectedClass = isSelectedDate(selectedDate, {year, month, day: i}) ? 'jscp-selected' : '';
     const $li = createElement("li");
-    $li.classList = `jscp-day ${todayClass}`;
+    $li.classList = `jscp-day ${todayClass} ${selectedClass}`;
     $li.innerText = i;
     daysFragment.appendChild($li);
   }

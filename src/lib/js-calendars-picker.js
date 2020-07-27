@@ -14,6 +14,7 @@ export class JSCalendarsPicker {
   constructor(elem, options) {
     this.options = {
       format: 'DD/MM/YYYY',
+      initDate: null,
       onSelect: (e) => e,
       // here overwrite defaults with user's options
       ...options
@@ -28,9 +29,9 @@ export class JSCalendarsPicker {
     // store today date
     this.today = new Date();
     // store today's year date
-    this.year = this.today.getFullYear();
+    this.year = (this.options.initDate || this.today).getFullYear();
     // store today's month date
-    this.month = this.today.getMonth() + 1;
+    this.month = (this.options.initDate || this.today).getMonth() + 1;
     
     this.selectedDate = {
       year: null,
@@ -56,13 +57,26 @@ export class JSCalendarsPicker {
     
     this.addEventListeners();
     
+    this.initPluginWithDate();
+    
     // append plugin DOM
     this.appendPluginDOM();
     
     // set initialized to `true`
     this.initialized = true;
   }
+  initPluginWithDate(){
+    const { initDate } = this.options;
+    if(!initDate) return;
+    this.selectedDate = {
+      year: initDate.getFullYear(),
+      month: initDate.getMonth() +1,
+      day: initDate.getDate(),
+    };
+    this.updateInputValue(initDate);
 
+    this.$monthDaysList.childNodes[this.selectedDate.day -1].classList.add('jscp-selected');
+  }
   appendPluginDOM(){
     // make the selected input readonly
     this.$elem.setAttribute('readonly', true)
@@ -90,7 +104,7 @@ export class JSCalendarsPicker {
   }
   updateMonthDaysList() {
     this.$monthDaysList.innerHTML = "";
-    this.$monthDaysList.append(getDaysInMonth(this.year, this.month));
+    this.$monthDaysList.append(getDaysInMonth(this.year, this.month, this.selectedDate));
     this.$monthDaysList.querySelectorAll('.jscp-day').forEach( element => {
       element.onclick = (e) => this.dayClickCallback(e)
     });
@@ -123,13 +137,18 @@ export class JSCalendarsPicker {
     const day = e.target.innerText;
     const dateObject = new Date(this.year, this.month - 1, day)
     // here we have the date object of the selected day
-    this.updateInputValue(dateFormatter(dateObject, this.options.format));
+    this.updateInputValue(dateObject);
     this.updateSelectedDay(e.target);
+    this.selectedDate = {
+      year: dateObject.getFullYear(),
+      month: dateObject.getMonth() +1,
+      day: dateObject.getDate(),
+    };
     this.options.onSelect(dateObject);
 
   }
-  updateInputValue(value){
-    this.$elem.value = value;
+  updateInputValue(dateObject){
+    this.$elem.value = dateFormatter(dateObject, this.options.format);
   }
   updateSelectedDay(target){
     $('.jscp-selected') && $('.jscp-selected').classList.remove('jscp-selected'); 
