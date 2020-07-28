@@ -1,4 +1,4 @@
-export const months = [
+export const MONTHS = [
   "January",
   "February",
   "March",
@@ -12,3 +12,18 @@ export const months = [
   "November",
   "December",
 ];
+export const SHORT_MONTHS = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sept",
+  "Oct",
+  "Nov",
+  "Dec",
+];
+export const SELECTED_DAY_CLASS = 'jscp-selected'; 

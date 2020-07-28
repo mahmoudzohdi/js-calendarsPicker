@@ -1,6 +1,6 @@
 // import dependencies
-import { months } from "../helpers/const-data";
-import { $, formatDate, focusClass, isElementOutsidePlugin } from "../helpers/utils";
+import { MONTHS, SELECTED_DAY_CLASS } from "../helpers/const-data";
+import { $, focusClass, isElementOutsidePlugin, dateFormatter } from "../helpers/utils";
 import {
   getCalenderWrapperRef,
   getCalenderContainerRef,
@@ -13,7 +13,10 @@ import {
 export class JSCalendarsPicker {
   constructor(elem, options) {
     this.options = {
+      format: 'DD/MM/YYYY',
+      defaultDate: null,
       onSelect: (e) => e,
+      // here overwrite defaults with user's options
       ...options
     }
     this.$elem = elem;
@@ -24,11 +27,11 @@ export class JSCalendarsPicker {
   // initialize plugin
   init() {
     // store today date
-    this.today = new Date();
+    const defaultDate = this.options.defaultDate || new Date();
     // store today's year date
-    this.year = this.today.getFullYear();
+    this.year = defaultDate.getFullYear();
     // store today's month date
-    this.month = this.today.getMonth() + 1;
+    this.month = defaultDate.getMonth() + 1;
     
     this.selectedDate = {
       year: null,
@@ -54,13 +57,22 @@ export class JSCalendarsPicker {
     
     this.addEventListeners();
     
+    this.initPluginWithDate();
+    
     // append plugin DOM
     this.appendPluginDOM();
     
     // set initialized to `true`
     this.initialized = true;
   }
+  initPluginWithDate(){
+    const { defaultDate } = this.options;
+    if(!defaultDate) return;
+    this.updateSelectedDate(defaultDate);
+    this.updateInputValue(defaultDate);
 
+    this.$monthDaysList.childNodes[this.selectedDate.day -1].classList.add(SELECTED_DAY_CLASS);
+  }
   appendPluginDOM(){
     // make the selected input readonly
     this.$elem.setAttribute('readonly', true)
@@ -74,21 +86,27 @@ export class JSCalendarsPicker {
     // appent plguin container into wrapper
     this.$calenderWrapper.append(this.$calenderContainer);
   }
-
+  updateSelectedDate(dateObject) {
+    this.selectedDate = {
+      year: dateObject.getFullYear(),
+      month: dateObject.getMonth() +1,
+      day: dateObject.getDate(),
+    };
+  }
   updateCalendar() {
     this.updateMonthDaysList();
     this.updateMonthNameLabel();
     this.updateYearLabel();
   }
   updateMonthNameLabel() {
-    this.$monthLabel.innerText = months[this.month - 1];
+    this.$monthLabel.innerText = MONTHS[this.month - 1];
   }
   updateYearLabel() {
     this.$yearLabel.innerText = this.year;
   }
   updateMonthDaysList() {
     this.$monthDaysList.innerHTML = "";
-    this.$monthDaysList.append(getDaysInMonth(this.year, this.month));
+    this.$monthDaysList.append(getDaysInMonth(this.year, this.month, this.selectedDate));
     this.$monthDaysList.querySelectorAll('.jscp-day').forEach( element => {
       element.onclick = (e) => this.dayClickCallback(e)
     });
@@ -100,7 +118,7 @@ export class JSCalendarsPicker {
     document.onclick = (e) => (isElementOutsidePlugin(this.$calenderWrapper, e.target) && focusClass(this.$calenderWrapper, false));
   }
   nextMonthClickCallback(){
-    if(this.month < months.length) {
+    if(this.month < MONTHS.length) {
       this.month++;
     } else {
       this.month = 1;
@@ -112,7 +130,7 @@ export class JSCalendarsPicker {
     if(this.month > 1) {
       this.month--;
     } else {
-      this.month = months.length;
+      this.month = MONTHS.length;
       this.year--;
     }
     this.updateCalendar()
@@ -121,16 +139,18 @@ export class JSCalendarsPicker {
     const day = e.target.innerText;
     const dateObject = new Date(this.year, this.month - 1, day)
     // here we have the date object of the selected day
-    this.updateInputValue(formatDate(dateObject));
+    this.updateInputValue(dateObject);
     this.updateSelectedDay(e.target);
+    this.updateSelectedDate(dateObject);
     this.options.onSelect(dateObject);
 
   }
-  updateInputValue(value){
-    this.$elem.value = value;
+  updateInputValue(dateObject){
+    this.$elem.value = dateFormatter(dateObject, this.options.format);
   }
   updateSelectedDay(target){
-    $('.jscp-selected') && $('.jscp-selected').classList.remove('jscp-selected'); 
-    target.classList.add("jscp-selected");
+    const $selectedDay =  $(`.${SELECTED_DAY_CLASS}`)
+    $selectedDay&& $selectedDay.classList.remove(SELECTED_DAY_CLASS); 
+    target.classList.add(SELECTED_DAY_CLASS);
   }
 }

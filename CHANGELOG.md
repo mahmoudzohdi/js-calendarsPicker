@@ -2,10 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.3.0] - 2020-07-28
+
+  ### Added
+  - add `format` option, now you can write your favorite format from the supported formats
+  - add `initDate` option, now you can init your calendarPicker with default date
+
 ## [0.2.3] - 2020-07-25
 
   ### Fixed
-    - fix issue in hide calendar popup when click outside in Firefox
+  - fix issue in hide calendar popup when click outside in Firefox
 
 ## [0.2.1] - 2020-07-24
 
