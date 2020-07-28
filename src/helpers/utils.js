@@ -1,4 +1,4 @@
-import {MONTHS, SHORT_MONTHS} from './const-data';
+import { MONTHS, SHORT_MONTHS } from "./const-data";
 export const createElement = (elementName) =>
   document.createElement(elementName);
 export const $ = (selector) => document.querySelector(selector);
@@ -31,85 +31,27 @@ const isDescendant = (parent, child) => {
 };
 
 const twoDigitsNumber = (num) => (num < 10 ? `0${num}` : num);
-const getFormatSplitter = (format) => {
-  if (format.indexOf(".") != -1) return ".";
-  if (format.indexOf(" ") != -1) return " ";
-  if (format.indexOf("-") != -1) return "-";
-  return "/";
-};
-const preparDayValue = (dateObj, dayFormat) => {
-  /**
-  suported day formats:
-    d: 1..31
-    dd: 01..31
-  */
-  const isUpperCase = dayFormat[0] == 'D';
-  const day = dateObj.getDate(); // get date day, for example: 1, 12
-  if(isUpperCase){
-    switch (dayFormat.length) {
-      case 2:
-        return twoDigitsNumber(day);
-      default:
-        return day;
-    }
-  }
-  return twoDigitsNumber(day);
-};
-const preparMonthValue = (dateObj, monthFormat) => {
-  /**
-  suported month formats:
-    M: 1..12
-    MM: 01..12
-    MMM: Jan
-    MMMM: January
-  */
-  const isUpperCase = monthFormat[0] == 'M';
-  const month = dateObj.getMonth() + 1; // get date month
-  if(isUpperCase) {
-    switch (monthFormat.length) {
-      case 4:
-        return MONTHS[month - 1]
-      case 3:
-        return SHORT_MONTHS[month - 1]
-      case 2:
-        return twoDigitsNumber(month);
-      default:
-        return month;
-    }
-  }
-  return twoDigitsNumber(month);
-};
-const preparYearValue = (dateObj, yearFormat) => {
-  /**
-  suported year formats:
-    YYYY: 2020
-    YY: 20
-  */
-  const isUpperCase = yearFormat[0] == "Y";
-  const year = dateObj.getFullYear(); // get date year
-  if(isUpperCase) {
-    switch (yearFormat.length) {
-      case 2:
-        let stringYear = String(x);
-        return stringYear.slice((stringYear.length - 2), stringYear.length);
-      default:
-        return year;
-    }
-  }
-  return year; // YYYY
-};
 
+const getShortYear = (dateObj) => {
+  const year = dateObj.getFullYear(); // get date year
+  let stringYear = String(year);
+  return stringYear.slice(stringYear.length - 2, stringYear.length);
+}
+const dateTokensHandlers = {
+  DD: (dateObj) => twoDigitsNumber(dateObj.getDate()),
+  D: (dateObj) => dateObj.getDate(),
+  MMMM: (dateObj) => MONTHS[dateObj.getMonth() + 1],
+  MMM: (dateObj) => SHORT_MONTHS[dateObj.getMonth() + 1],
+  MM: (dateObj) => twoDigitsNumber(dateObj.getMonth() + 1),
+  M: (dateObj) => dateObj.getMonth() + 1,
+  YYYY: (dateObj) => dateObj.getFullYear(),
+  YY: (dateObj) => getShortYear(dateObj),
+};
 export const dateFormatter = (dateObj, format) => {
-  let splitter = getFormatSplitter(format);
-  const splittedFormat = format.split(splitter);
-  return splittedFormat
-    .map((item) => {
-      if (item.toLocaleLowerCase().indexOf("d") != -1)
-        return preparDayValue(dateObj, item);
-      if (item.toLocaleLowerCase().indexOf("m") != -1)
-        return preparMonthValue(dateObj, item);
-      if (item.toLocaleLowerCase().indexOf("y") != -1)
-        return preparYearValue(dateObj, item);
-    })
-    .join(splitter);
+  for (const token in dateTokensHandlers) {
+    if(format.indexOf(token) != -1){
+      format = format.replace(token, dateTokensHandlers[token](dateObj));
+    }
+  }
+  return format;
 };
