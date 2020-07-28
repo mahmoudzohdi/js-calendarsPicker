@@ -14,7 +14,7 @@ export class JSCalendarsPicker {
   constructor(elem, options) {
     this.options = {
       format: 'DD/MM/YYYY',
-      initDate: null,
+      defaultDate: null,
       onSelect: (e) => e,
       // here overwrite defaults with user's options
       ...options
@@ -27,11 +27,11 @@ export class JSCalendarsPicker {
   // initialize plugin
   init() {
     // store today date
-    const initDate = this.options.initDate || new Date();
+    const defaultDate = this.options.defaultDate || new Date();
     // store today's year date
-    this.year = initDate.getFullYear();
+    this.year = defaultDate.getFullYear();
     // store today's month date
-    this.month = initDate.getMonth() + 1;
+    this.month = defaultDate.getMonth() + 1;
     
     this.selectedDate = {
       year: null,
@@ -66,10 +66,10 @@ export class JSCalendarsPicker {
     this.initialized = true;
   }
   initPluginWithDate(){
-    const { initDate } = this.options;
-    if(!initDate) return;
-    this.updateSelectedDate(initDate);
-    this.updateInputValue(initDate);
+    const { defaultDate } = this.options;
+    if(!defaultDate) return;
+    this.updateSelectedDate(defaultDate);
+    this.updateInputValue(defaultDate);
 
     this.$monthDaysList.childNodes[this.selectedDate.day -1].classList.add(SELECTED_DAY_CLASS);
   }
