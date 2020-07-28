@@ -47,15 +47,6 @@ default: `'DD/MM/YYYY'`
 | `DD`   | `01..31`  | 2 digit day number   |
 
 
-#### supported splitters:
-
-| Input | Example      |
-| ----- | ------------ |
-| `/`   | `DD/MM/YYYY` |
-| `.`   | `DD.MM.YYYY` |
-| `-`   | `DD-MM-YYYY` |
-| space | `DD MM YYYY` |
-
 example:
 
 ```
@@ -64,9 +55,9 @@ new JSCalendarsPicker(elem, {
 });
 ```
 
-### initDate
+### defaultDate
 
-You can use this option to init your calendar with pre-defined date
+You can use this option to init your calendar with default date
 
 type: `Date Object`
 default: `null`
@@ -75,7 +66,7 @@ example:
 
 ```
 new JSCalendarsPicker(elem, {
-  initDate: new Date(2020, 8, 20)
+  defaultDate: new Date(2020, 8, 20)
 });
 ```
 
