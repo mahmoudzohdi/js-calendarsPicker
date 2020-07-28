@@ -5,8 +5,8 @@ All notable changes to this project will be documented in this file.
 ## [0.3.0] - 2020-07-28
 
   ### Added
-  - add `format` option, now you can write your favorite format from the supported formats
-  - add `initDate` option, now you can init your calendarPicker with default date
+  - add [format](https://github.com/mahmoudzohdi/js-calendarsPicker#format) option, now you can write your favorite format based on the supporte [tokens](https://github.com/mahmoudzohdi/js-calendarsPicker#supported-tokens-case-sensitive)
+  - add [defaultdate](https://github.com/mahmoudzohdi/js-calendarsPicker#defaultdate) option, now you can init your calendarPicker with default date
   
   ### Fixed
   - fix selected day storing, it was losing if you navigate between months
