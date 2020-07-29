@@ -4,11 +4,13 @@
 
 ## Installation
 
+#### NPM
+
 ```
 npm i js-calendarspicker
 ```
 
-#### or CDN
+#### CDN
 
 ```
 <script src="https://unpkg.com/js-calendarspicker@0.3.0"></script>
