@@ -1,12 +1,19 @@
 # JS-CalendarsPicker
 
-[Demo Here](https://zohdi.me/js-calendarspicker)
+[Demo Here](https://codesandbox.io/s/sad-morning-lkbnd?file=/index.html)
 
 ## Installation
 
 ```
 npm i js-calendarspicker
 ```
+
+#### or CDN
+
+```
+<script src="https://unpkg.com/js-calendarspicker@0.3.0"></script>
+```
+
 
 ## Usage
 
