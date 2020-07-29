@@ -13,7 +13,7 @@ npm i js-calendarspicker
 #### CDN
 
 ```
-<script src="https://unpkg.com/js-calendarspicker@0.3.0"></script>
+<script src="https://unpkg.com/js-calendarspicker"></script>
 ```
 
 
