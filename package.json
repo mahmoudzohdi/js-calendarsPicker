@@ -5,7 +5,14 @@
   "description": "VanillaJS Calendar Picker",
   "author": "Mahmoud Zohdi <mahmoud.zohdi@gmail.com>",
   "main": "dist/index.js",
-  "keywords": ["calendar", "js calendar", "calendar picker", "js calendar picker", "datepicker", "date picker"],
+  "keywords": [
+    "calendar",
+    "js calendar",
+    "calendar picker",
+    "js calendar picker",
+    "datepicker",
+    "date picker"
+  ],
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack",
     "start": "webpack-dev-server"
